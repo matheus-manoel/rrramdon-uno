@@ -1,20 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
+import Header from './components/Header';
+import CardGrid from './components/CardGrid';
 
 function App() {
-  return (
-    <Container>
-      <Row>
-        <Col>rrrandomUno.</Col>
-        <Col>1 of 1</Col>
-      </Row>
-    </Container>
-  );
-}
+  const [cards, setCards] = React.useState([]);
 
-export default App;
+  React.useEffect(() => {
+    fetch("https://gist.githubusercontent.com/matheus-manoel/5e28ca7e3d46278fc722be484da3ec3b/raw/custom_wild_cards.json")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setCards(result)
+        },
+        (error) => {
+          React.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }, [])
+
+    return (
+      <div>
+        <Header />
+        <CardGrid cards={cards}/>
+      </div>
+    );
+  }
+
+    export default App;

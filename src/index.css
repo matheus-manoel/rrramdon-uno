@@ -5,7 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #CB3939;
+  background: rgb(255,0,0);
+  background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(167,0,0,1) 35%, rgba(87,5,5,1) 100%);
+  color: white;
+  min-height: 100vh;
 }
 
 code {

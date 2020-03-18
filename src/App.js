@@ -22,12 +22,12 @@ function App() {
       )
   }, [])
 
-    return (
-      <div>
-        <Header />
-        <CardGrid cards={cards}/>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Header cards={cards}/>
+      <CardGrid cards={cards}/>
+    </div>
+  );
+}
 
-    export default App;
+export default App;

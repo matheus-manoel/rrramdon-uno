@@ -1,0 +1,20 @@
+.container-fluid{
+  padding: 10vh 15vw 0 15vw;
+}
+
+.title {
+  font-size: 5vw;
+  display: inline;
+  color: white;
+}
+
+.col {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.modal-content {
+  max-width: 0;
+}

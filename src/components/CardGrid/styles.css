@@ -1,0 +1,9 @@
+.card-deck {
+  justify-content: center !important;
+}
+
+.card {
+  min-width: 20vw;
+  max-width: 20vw;
+  margin-bottom: 30px !important;
+}

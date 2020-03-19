@@ -8,9 +8,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useSelector, useDispatch } from 'react-redux';
 
 
-function Header(props) {
+function Header() {
+  const dispatch = useDispatch();
+  const cards = useSelector(state => state.cards);
   const [show, setShow] = React.useState(false);
   const [card, setCard] = React.useState({});
   
@@ -18,7 +21,15 @@ function Header(props) {
   const handleShow = () => setShow(true);
 
   React.useEffect(() => {
-    _.isEmpty(props.cards) ? setCard({}) : setCard(_.sample(props.cards));
+    if (show) {
+      if (_.isEmpty(cards)) { 
+        setCard({})
+      } else {
+        let card = _.sample(cards) ;
+        setCard(card);
+        dispatch({ type: 'ADD_TO_HISTORY', card });
+      }
+    }
   }, [show])
 
   return (

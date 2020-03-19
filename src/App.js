@@ -2,16 +2,18 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header';
 import CardGrid from './components/CardGrid';
+import { useDispatch } from 'react-redux';
+
 
 function App() {
-  const [cards, setCards] = React.useState([]);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     fetch("https://gist.githubusercontent.com/matheus-manoel/5e28ca7e3d46278fc722be484da3ec3b/raw/custom_wild_cards.json")
       .then(res => res.json())
       .then(
         (result) => {
-          setCards(result)
+          dispatch({ type: 'SET_CARDS', cards: result })
         },
         (error) => {
           React.setState({
@@ -23,10 +25,10 @@ function App() {
   }, [])
 
   return (
-    <div>
-      <Header cards={cards}/>
-      <CardGrid cards={cards}/>
-    </div>
+    <>
+      <Header />
+      <CardGrid />
+    </>
   );
 }
 

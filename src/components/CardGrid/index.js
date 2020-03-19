@@ -4,10 +4,11 @@ import CustomWildCard from '../CustomWildCard';
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import CardDeck from'react-bootstrap/CardDeck';
+import { useSelector } from 'react-redux';
 
 
-const getCards = (props) => {
-  return props.cards.map((card, index) => (
+const getCards = (cards) => {
+  return cards.map((card, index) => (
     <CustomWildCard 
       key={index}
       title={card.title}
@@ -18,10 +19,11 @@ const getCards = (props) => {
   ));
 }
 
-function CardGrid(props) {
+function CardGrid() {
+  const cards = useSelector(state => state.cards);
   return (
     <Container fluid>
-      <CardDeck>{getCards(props)}</CardDeck>
+      <CardDeck>{getCards(cards)}</CardDeck>
     </Container>
   );
 }
